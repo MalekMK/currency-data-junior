@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body style="background-image: url('https://scontent.ftun1-1.fna.fbcdn.net/v/t1.15752-9/74443687_417074155883788_1989074602604625920_n.png?_nc_cat=103&_nc_oc=AQlHZNjMUTBZUWu03SidQsHQMbXNJEWSAWPCKg-4mnxVarfkwiqd12W7B-34rd9Bd50&_nc_ht=scontent.ftun1-1.fna&oh=b8f9ebf00b2581167f95ccee1f641a56&oe=5E5F8F7D');background-repeat: no-repeat;background-size:cover;background-attachment: fixed; ">
+   <div class="row">
+      <div class="col-lg-7 mx-auto">
+      <div class="d-flex justify-content-center mt-5">
+         <a href="/"><button class="btn btn-info ">home page</button></a>
+         <a href="/history"><button class="btn btn-primary mx-5 ">Refresh</button></a>
+      </div>
+      <table class="table mt-5 bg-white">
+         <thead class="thead-dark">
+            <tr>
+            <th scope="col">Date</th>
+            <th scope="col">From/To</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Result</th>
+            </tr>
+         </thead>
+         <tbody>
+            <%# getting the history %>
+            <% history.each do |history| %>
+            <tr>
+               <th scope="row"><%= history.created_at %></th>
+               <td><%= history.fromTo %></td>
+               <td><%='%.2f' % history.amount %></td>
+               <td><%='%.2f' %  history.result %></td>
+            </tr>
+            <% end %>
+         </tbody>
+      </table>
+      <% if history.length != 0 %>
+      <div class="d-flex justify-content-end my-5">
+         <a href="/delete-history"><button class="btn btn-danger">Clear All The History</button></a>
+      </div>
+      <%end%>
+      </div>
+   </div>
+</body>
+</html>
